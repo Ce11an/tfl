@@ -1,0 +1,33 @@
+name: Unit Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: unit-tests-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Python
+        uses: ./.github/actions
+
+      - name: Install tools
+        run: poetry install --only dev
+
+      - name: Install pytest plugin
+        run: poetry run pip install pytest-github-actions-annotate-failures
+
+      - id: pytest
+        if: always()
+        run: poetry run pytest --cov=tfl tests/
