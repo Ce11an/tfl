@@ -9,7 +9,7 @@
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json)](https://github.com/charliermarsh/ruff)
 
- Transport for London Python client.
+"""tfl: A Python package for the Transport for London (TFL) API."""
 
 </div>
 
@@ -30,15 +30,32 @@ the same request twice. The client is built on top of HTTPX, which provides a fa
 
 Planned features include:
 - [x] Pythonic interface to the TFL API
-- [ ] CLI
+- [x] CLI
 - [ ] Documentation
 - [ ] Tests
 - [ ] CI/CD
 - [ ] Publish to PyPI
 
-
 ## Installation
 
-    ```bash
-    poetry install
-    ```
+```bash
+poetry install
+```
+
+## Usage
+
+### CLI
+
+```bash
+poetry run tfl --help
+```
+
+### Client
+
+```python
+import tfl
+
+async with tfl.Client() as client:
+    response = await client.get_lift_disruptions()
+print(response.json())
+```
