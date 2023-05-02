@@ -1,11 +1,9 @@
 """Client to interact with the TFL API."""
 
-import datetime
 from collections.abc import Callable, Generator, Mapping
 from typing import Any
 
 import httpx
-import pydantic
 from httpx import AsyncBaseTransport
 
 # noinspection PyProtectedMember
@@ -22,43 +20,14 @@ from httpx._types import (
     VerifyTypes,
 )
 
-from tfl import models
-
-__all__ = ["Client", "Auth", "Response"]
-
-
-class Response(pydantic.BaseModel):
-    """Response model for Transport for London API.
-
-    Args:
-        received_time: The time the response was received.
-        code: The HTTP status code.
-        data: The data returned by the API.
-    """
-
-    received_time: datetime.datetime = pydantic.Field(
-        title="Received Time",
-        description="The time the response was received.",
-        default_factory=datetime.datetime.now,
-    )
-    code: int = pydantic.Field(
-        ...,
-        title="Code",
-        description="The HTTP status code.",
-    )
-
-    data: pydantic.BaseModel = pydantic.Field(
-        ...,
-        title="Data",
-        description="The data returned by the API.",
-    )
+__all__ = ["Client", "Auth"]
 
 
 class Auth(httpx.Auth):
     """Auth class for Transport for London API.
 
     Args:
-        key: The API key.
+        key: The TFL API key.
     """
 
     def __init__(self, key: str) -> None:
@@ -105,10 +74,10 @@ class Client(httpx.AsyncClient):
 
     Examples:
     >>> import asyncio
-
+    >>>
     >>>> async with Client(auth=Auth(key="<your-tfl-api-key>")) as client:
-    >>>     result = await client.get_lift_disruptions()
-    >>>> print(result.data)
+    >>>     response = await client.get_lift_disruptions()
+    >>>> print(response.json())
     """
 
     def __init__(
@@ -157,15 +126,12 @@ class Client(httpx.AsyncClient):
             app=app,
         )
 
-    async def get_lift_disruptions(self) -> Response:
+    async def get_lift_disruptions(self) -> httpx.Response:
         """Get lift disruptions.
 
         Gets all current lift disruptions for the current day.
 
         Returns:
-            The response from the API as a `Response` model.
+            The response from the API.
         """
-        response = await self.get(url="Disruptions/Lifts/v2/")
-        return Response(
-            code=response.status_code, data=models.LiftDisruptionsV2ResponseModel.parse_obj(response.json())
-        )
+        return await self.get(url="Disruptions/Lifts/v2/")
