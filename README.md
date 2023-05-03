@@ -31,9 +31,12 @@ the same request twice. The client is built on top of HTTPX, which provides a fa
 Planned features include:
 - [x] Pythonic interface to the TFL API
 - [x] CLI
+- [x] Tests
+- [x] CI/CD
+- [ ] Dependabot
+- [ ] pre-commit bot
+- [ ] CodeCov
 - [ ] Documentation
-- [ ] Tests
-- [ ] CI/CD
 - [ ] Publish to PyPI
 
 ## Installation
@@ -53,9 +56,9 @@ poetry run tfl --help
 ### Client
 
 ```python
-import tfl
+from tfl import clients
 
-async with tfl.Client() as client:
+async with clients.LiftDisruptionsV2Client() as client:
     response = await client.get_lift_disruptions()
 print(response.json())
 ```
