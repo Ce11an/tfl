@@ -2,7 +2,7 @@
 from typer.testing import CliRunner
 
 from tests.static_vars import LIFT_DISRUPTIONS
-from tfl.main import app
+from tfl.cli.main import app
 
 runner = CliRunner()
 
@@ -25,7 +25,7 @@ class TestApp:
     def test_lift_disruptions(self, httpx_mock) -> None:
         """Test the lift-disruptions command."""
         httpx_mock.add_response(
-            url="https://api.tfl.gov.uk/Disruptions/Lifts/v2/",
+            url="https://api.tfl.gov.uk/Disruptions/Lifts/v2",
             json=LIFT_DISRUPTIONS,
             method="GET",
         )
@@ -37,7 +37,7 @@ class TestApp:
         """Test the lift-disruptions command with the TFL_API_KEY environment variable."""
         monkeypatch.setenv("TFL_API_KEY", "XXX")
         httpx_mock.add_response(
-            url="https://api.tfl.gov.uk/Disruptions/Lifts/v2/?app_key=XXX",
+            url="https://api.tfl.gov.uk/Disruptions/Lifts/v2?app_key=XXX",
             json=LIFT_DISRUPTIONS,
             method="GET",
         )

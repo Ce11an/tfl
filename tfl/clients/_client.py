@@ -1,6 +1,6 @@
 """Client to interact with the TFL API."""
 
-from collections.abc import Callable, Generator, Mapping
+from collections.abc import Callable, Mapping
 from typing import Any
 
 import httpx
@@ -20,34 +20,13 @@ from httpx._types import (
     VerifyTypes,
 )
 
-__all__ = ["Client", "Auth"]
+from tfl.clients import Auth
 
-
-class Auth(httpx.Auth):
-    """Auth class for Transport for London API.
-
-    Args:
-        key: The TFL API key.
-    """
-
-    def __init__(self, key: str) -> None:
-        self.key = key
-
-    def auth_flow(self, request: httpx.Request) -> Generator[httpx.Request, Any, None]:
-        """Add the API key to the request.
-
-        Args:
-            request: The request to be sent.
-
-        Returns:
-            The request with the API key added.
-        """
-        request.url = request.url.copy_add_param(key="app_key", value=self.key)
-        yield request
+__all__ = ["TFLClient"]
 
 
 # noinspection PyCompatibility
-class Client(httpx.AsyncClient):
+class TFLClient(httpx.AsyncClient):
     """Client to interact with the TFL API.
 
     Args:
@@ -75,8 +54,10 @@ class Client(httpx.AsyncClient):
     Examples:
     >>> import asyncio
     >>>
-    >>>> async with Client(auth=Auth(key="<your-tfl-api-key>")) as client:
-    >>>     response = await client.get_lift_disruptions()
+    >>> from tfl.clients import Auth
+    >>>
+    >>> async with TFLClient(auth=Auth(key="<your-tfl-api-key>")) as client:
+    >>>     response = await client.get(url="Disruptions/Lifts/v2")
     >>>> print(response.json())
     """
 
@@ -125,13 +106,3 @@ class Client(httpx.AsyncClient):
             transport=transport,
             app=app,
         )
-
-    async def get_lift_disruptions(self) -> httpx.Response:
-        """Get lift disruptions.
-
-        Gets all current lift disruptions for the current day.
-
-        Returns:
-            The response from the API.
-        """
-        return await self.get(url="Disruptions/Lifts/v2/")

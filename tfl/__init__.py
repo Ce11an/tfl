@@ -2,4 +2,4 @@
 
 __version__ = "0.1.0"
 
-from tfl._client import Auth, Client
+from tfl import cli, clients
