@@ -12,8 +12,7 @@ to the base URL. For example, if the `base_url` is set to `https://api.tfl.gov.u
 `Disruptions/Lifts/v2`, the request URL will be `https://api.tfl.gov.uk/Disruptions/Lifts/v2`.
 """
 
-from collections.abc import Callable, Mapping
-from typing import Any, List, Optional, Union
+from typing import Any, Callable, List, Mapping, Optional, Union
 
 import httpx
 from httpx import AsyncBaseTransport

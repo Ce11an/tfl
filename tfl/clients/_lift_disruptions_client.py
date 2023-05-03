@@ -1,7 +1,6 @@
 """Client to interact with the Lift Disruptions V2 API."""
 
-from collections.abc import Callable, Mapping
-from typing import Any, List, Optional, Union
+from typing import Any, Callable, List, Mapping, Optional, Union
 
 import httpx
 from httpx import AsyncBaseTransport
