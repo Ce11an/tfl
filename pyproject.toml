@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "tfl"
 version = "0.1.0"
-description = "Transport for London python client."
+description = "A Python package for the Transport for London (TFL) API."
 authors = ["Cellan Hall <hallcellan@gmail.com>"]
 readme = "README.md"
 
@@ -27,6 +27,8 @@ tfl = "tfl.cli.main:app"
 python = ">=3.10, <3.12"
 httpx = "~=0.24.0"
 typer = {extras = ["all"], version = "~=0.9.0"}
+mkdocs-material = "~=9.1.9"
+mkdocstrings = {extras = ["python"], version = "~=0.21.2"}
 
 [tool.poetry.dev-dependencies]
 pre-commit = "~=3.2.2"
