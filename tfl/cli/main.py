@@ -1,8 +1,9 @@
 """Main module for the tfl CLI."""
-from typing import Annotated, Optional
+from typing import Optional
 
 import rich
 import typer
+from typing_extensions import Annotated
 
 import tfl
 from tfl import cli, clients
