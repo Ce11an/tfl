@@ -16,6 +16,8 @@ classifiers = [
     "Topic :: Software Development",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
 ]
@@ -24,7 +26,7 @@ classifiers = [
 tfl = "tfl.cli.main:app"
 
 [tool.poetry.dependencies]
-python = ">=3.10, <3.12"
+python = ">=3.8, <3.12"
 httpx = "~=0.24.0"
 typer = {extras = ["all"], version = "~=0.9.0"}
 
@@ -71,6 +73,7 @@ exclude = '''
 [tool.ruff]
 select = ["I", "D", "N", "UP"]
 line-length = 120
+target-version = "py38"
 
 ignore = [
     "D107"
@@ -107,7 +110,7 @@ convention = "google"
 keep-runtime-typing = true
 
 [tool.mypy]
-  python_version = "3.10"
+  python_version = "3.8"
   pretty = true
   show_traceback = true
   color_output = true

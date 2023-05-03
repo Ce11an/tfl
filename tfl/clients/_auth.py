@@ -8,8 +8,7 @@ required to use the TFL API. However, without registering for an API key, you wi
 If an invalid API key is provided an error by the TFL API will be returned.
 """
 
-from collections.abc import Generator
-from typing import Any
+from typing import Any, Generator
 
 import httpx
 
