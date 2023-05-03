@@ -51,14 +51,15 @@ class LiftDisruptionsV2Client(TFLClient):
             in a response Content-Type header. Set to a callable for automatic character set detection. Default:
             "utf-8".
 
-    Examples:
-    >>> import asyncio
-    >>>
-    >>> from tfl.clients import Auth
-    >>>
-    >>> async with LiftDisruptionsV2Client(auth=Auth(key="<your-tfl-api-key>")) as client:
-    >>>     response = await client.get_lift_disruptions()
-    >>>> print(response.json())
+    Example:
+        ```python
+        from tfl.clients import Auth
+
+        async with LiftDisruptionsV2Client(auth=Auth(key="<your-tfl-api-key>")) as client:
+            response = await client.get_lift_disruptions()
+
+        print(response.json())
+        ```
     """
 
     def __init__(

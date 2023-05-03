@@ -1,8 +1,6 @@
 # tfl
 
-<div align="center">
-
-![TFL-Image.jpg](..%2Fassets%2FTFL-Image.jpg)
+![TFL-Image.jpg](https://github.com/Ce11an/tfl/blob/main/assets/TFL-Image.jpg)
 
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -13,20 +11,16 @@
 ![Code Stability](https://github.com/Ce11an/tfl/actions/workflows/stability.yml/badge.svg)
 ![Unit Tests](https://github.com/Ce11an/tfl/actions/workflows/unit-tests.yml/badge.svg)
 
-A Python package for the Transport for London (TFL) API.
-
-</div>
-
-*Disclaimer*: This project is not affiliated with Transport for London.
-
-This project is a Python client for the [Transport for London API](https://api-portal.tfl.gov.uk). It is a work in
-progress and is not yet ready for use.
+A Python package for the [Transport for London (TFL) API](https://api-portal.tfl.gov.uk).
 
 The TFL API is a RESTful API that provides data related to all modes of transport in London, including cycle hire,
 buses, roads, and the underground. Anonymous access to the TFL API is limited to 50 requests a minute. If you want to
 call the API more than that, you'll need to subscribe to a "Product" which lets you bypass this limit with a
 subscription-key that you append to your requests.
 
+Currently, this package only supports the
+[Lift Disruptions API](https://api-portal.tfl.gov.uk/api-details#api=Disruptions-Lifts-v2&operation=get). However,
+the plan is to add support for all the TFL APIs. Contributions are welcome!
 
 ## Installation
 
@@ -34,19 +28,19 @@ subscription-key that you append to your requests.
 poetry install
 ```
 
-## Quickstart
+## ⚡️Quickstart
 
-### CLI
-The TFL CLI provides a command line interface to the TFL API. It is built on top of 
+### ⌨️ CLI
+The TFL CLI provides a command line interface to the TFL API. It is built on top of
 [Typer](https://typer.tiangolo.com/), which provides easy way to build command line interfaces.
 
 ```bash
 poetry run tfl --help
 ```
 
-### Client
+### 🦋 Client
 The TFL client provides a Python interface to the TFL API. It provides a Pythonic interface to the API, and handles
-authentication and rate limiting for you. The client is built on top of [HTTPX](https://www.python-httpx.org/), which 
+authentication and rate limiting for you. The client is built on top of [HTTPX](https://www.python-httpx.org/), which
 provides a fast, async HTTP client.
 
 ```python
@@ -54,6 +48,20 @@ from tfl import clients
 
 async with clients.LiftDisruptionsV2Client() as client:
     response = await client.get_lift_disruptions()
-    
+
 print(response.json())
 ```
+
+## 🛡 License
+
+[![License](https://img.shields.io/github/license/Ce11an/tfl)](https://github.com/Ce11an/tfl/blob/main/LICENSE)
+
+This project is licensed under the terms of the `MIT` license. See [LICENSE](https://github.com/Ce11an/tfl/blob/main/LICENSE) for more details.
+
+## 🚀 Credits
+
+A special thanks to HTTPX, Typer, and the TFL API team for making this project possible.
+
+This project was built using [IntelliJ IDEA](https://www.jetbrains.com/community/opensource/?utm_campaign=opensource&utm_content=approved&utm_medium=email&utm_source=newsletter&utm_term=jblogo#support).
+
+![JetBrains Black Box Logo logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_square.svg)

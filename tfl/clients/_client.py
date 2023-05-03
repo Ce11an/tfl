@@ -1,4 +1,16 @@
-"""Client to interact with the TFL API."""
+"""A client to interact with the TFL API.
+
+The `TFLClient` class is a subclass of [httpx.AsyncClient](https://www.python-httpx.org/api/#asyncclient) that is used
+to interact with the TFL API. It is used as the base class for all other TFL API clients.
+
+The `TFLClient` allows for the `Auth` class to be passed in as an argument. This will add the API key to the request
+URL as a query parameter. If no `Auth` class is passed in, the request will be sent without an API key. This will
+result in a rate limit of 50 requests per hour.
+
+Also, the `base_url` is set to the TFL API base URL. This means that when a request is sent, the URL will be appended
+to the base URL. For example, if the `base_url` is set to `https://api.tfl.gov.uk/`, and the request URL is set to
+`Disruptions/Lifts/v2`, the request URL will be `https://api.tfl.gov.uk/Disruptions/Lifts/v2`.
+"""
 
 from collections.abc import Callable, Mapping
 from typing import Any
@@ -51,14 +63,15 @@ class TFLClient(httpx.AsyncClient):
             in a response Content-Type header. Set to a callable for automatic character set detection. Default:
             "utf-8".
 
-    Examples:
-    >>> import asyncio
-    >>>
-    >>> from tfl.clients import Auth
-    >>>
-    >>> async with TFLClient(auth=Auth(key="<your-tfl-api-key>")) as client:
-    >>>     response = await client.get(url="Disruptions/Lifts/v2")
-    >>>> print(response.json())
+    Example:
+        ```python
+        from tfl.clients import Auth
+
+        async with TFLClient(auth=Auth(key="<your-tfl-api-key>")) as client:
+            response = await client.get(url="Disruptions/Lifts/v2")
+
+        print(response.json())
+        ```
     """
 
     def __init__(
