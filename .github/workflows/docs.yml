@@ -1,0 +1,21 @@
+name: docs
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  deploy-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Python
+        uses: ./.github/actions
+
+      - name: Install tools
+        run: poetry install --only dev
+
+      - name: Deploy docs
+        run: mkdocs gh-deploy --force
