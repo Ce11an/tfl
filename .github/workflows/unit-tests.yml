@@ -30,4 +30,7 @@ jobs:
 
       - id: pytest
         if: always()
-        run: poetry run pytest --cov=tfl tests/
+        run: poetry run pytest --cov-report xml --cov=tfl tests/
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
