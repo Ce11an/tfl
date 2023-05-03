@@ -13,7 +13,7 @@ to the base URL. For example, if the `base_url` is set to `https://api.tfl.gov.u
 """
 
 from collections.abc import Callable, Mapping
-from typing import Any
+from typing import Any, List, Optional, Union
 
 import httpx
 from httpx import AsyncBaseTransport
@@ -37,7 +37,6 @@ from tfl.clients import Auth
 __all__ = ["TFLClient"]
 
 
-# noinspection PyCompatibility
 class TFLClient(httpx.AsyncClient):
     """Client to interact with the TFL API.
 
@@ -77,25 +76,25 @@ class TFLClient(httpx.AsyncClient):
     def __init__(
         self,
         *,
-        auth: Auth | None = None,
-        params: QueryParamTypes | None = None,
-        headers: HeaderTypes | None = None,
-        cookies: CookieTypes | None = None,
+        auth: Optional[Auth] = None,
+        params: Optional[QueryParamTypes] = None,
+        headers: Optional[HeaderTypes] = None,
+        cookies: Optional[CookieTypes] = None,
         verify: VerifyTypes = True,
-        cert: CertTypes | None = None,
+        cert: Optional[CertTypes] = None,
         http1: bool = True,
         http2: bool = False,
-        proxies: ProxiesTypes | None = None,
-        mounts: Mapping[str, AsyncBaseTransport] | None = None,
+        proxies: Optional[ProxiesTypes] = None,
+        mounts: Optional[Mapping[str, AsyncBaseTransport]] = None,
         timeout: TimeoutTypes = DEFAULT_TIMEOUT_CONFIG,
         follow_redirects: bool = False,
         limits: Limits = DEFAULT_LIMITS,
         max_redirects: int = DEFAULT_MAX_REDIRECTS,
-        event_hooks: Mapping[str, list[Callable[..., Any]]] | None = None,
-        transport: AsyncBaseTransport | None = None,
-        app: Callable[..., Any] | None = None,
+        event_hooks: Optional[Mapping[str, List[Callable[..., Any]]]] = None,
+        transport: Optional[AsyncBaseTransport] = None,
+        app: Optional[Callable[..., Any]] = None,
         trust_env: bool = True,
-        default_encoding: str | Callable[[bytes], str] = "utf-8",
+        default_encoding: Union[str, Callable[[bytes], str]] = "utf-8",
     ) -> None:
         super().__init__(
             auth=auth,

@@ -1,5 +1,4 @@
 """Main module for the tfl CLI."""
-
 from typing import Annotated, Optional
 
 import rich
