@@ -9,7 +9,7 @@
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json)](https://github.com/charliermarsh/ruff)
 
-"""tfl: A Python package for the Transport for London (TFL) API."""
+A Python package for the Transport for London (TFL) API.
 
 </div>
 
