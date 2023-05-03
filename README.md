@@ -11,6 +11,7 @@
 ![Code Stability](https://github.com/Ce11an/tfl/actions/workflows/stability.yml/badge.svg)
 ![Unit Tests](https://github.com/Ce11an/tfl/actions/workflows/unit-tests.yml/badge.svg)
 [![codecov](https://codecov.io/gh/Ce11an/tfl/branch/main/graph/badge.svg?token=ZR23YMRZVV)](https://codecov.io/gh/Ce11an/tfl)
+[![CodeFactor](https://www.codefactor.io/repository/github/ce11an/tfl/badge)](https://www.codefactor.io/repository/github/ce11an/tfl)
 
 A Python package for the [Transport for London (TFL) API](https://api-portal.tfl.gov.uk).
 
