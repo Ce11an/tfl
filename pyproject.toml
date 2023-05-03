@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "tfl"
 version = "0.1.0"
-description = "Transport for London python client."
+description = "A Python package for the Transport for London (TFL) API."
 authors = ["Cellan Hall <hallcellan@gmail.com>"]
 readme = "README.md"
 
@@ -37,6 +37,8 @@ pytest = "~=7.3.1"
 pytest-cov = "~=4.0.0"
 pytest-httpx = "~=0.22.0"
 pytest-asyncio = "~=0.21.0"
+mkdocs-material = "~=9.1.9"
+mkdocstrings = {extras = ["python"], version = "~=0.21.2"}
 
 [tool.black]
 line-length = 120
