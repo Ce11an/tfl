@@ -8,6 +8,10 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json)](https://github.com/charliermarsh/ruff)
+[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/Ce11an/tfl/blob/main/.pre-commit-config.yaml)
+[![Semantic Versions](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg)](https://github.com/Ce11an/tfl/releases)
+![Code Stability](https://github.com/Ce11an/tfl/actions/workflows/stability.yml/badge.svg)
+![Unit Tests](https://github.com/Ce11an/tfl/actions/workflows/unit-tests.yml/badge.svg)
 
 A Python package for the Transport for London (TFL) API.
 
@@ -31,9 +35,12 @@ the same request twice. The client is built on top of HTTPX, which provides a fa
 Planned features include:
 - [x] Pythonic interface to the TFL API
 - [x] CLI
+- [x] Tests
+- [x] CI/CD
+- [ ] Dependabot
+- [ ] pre-commit bot
+- [ ] CodeCov
 - [ ] Documentation
-- [ ] Tests
-- [ ] CI/CD
 - [ ] Publish to PyPI
 
 ## Installation
@@ -53,9 +60,9 @@ poetry run tfl --help
 ### Client
 
 ```python
-import tfl
+from tfl import clients
 
-async with tfl.Client() as client:
+async with clients.LiftDisruptionsV2Client() as client:
     response = await client.get_lift_disruptions()
 print(response.json())
 ```
