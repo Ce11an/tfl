@@ -10,6 +10,7 @@
 [![Semantic Versions](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg)](https://github.com/Ce11an/tfl/releases)
 ![Code Stability](https://github.com/Ce11an/tfl/actions/workflows/stability.yml/badge.svg)
 ![Unit Tests](https://github.com/Ce11an/tfl/actions/workflows/unit-tests.yml/badge.svg)
+[![codecov](https://codecov.io/gh/Ce11an/tfl/branch/main/graph/badge.svg?token=ZR23YMRZVV)](https://codecov.io/gh/Ce11an/tfl)
 
 A Python package for the [Transport for London (TFL) API](https://api-portal.tfl.gov.uk).
 
