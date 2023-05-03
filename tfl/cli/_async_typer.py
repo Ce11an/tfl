@@ -5,6 +5,8 @@ import functools
 
 import typer
 
+__all__ = ["AsyncTyper"]
+
 
 class AsyncTyper(typer.Typer):
     """A subclass of typer.Typer that allows async functions to be used as commands.

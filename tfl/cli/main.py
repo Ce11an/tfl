@@ -6,9 +6,9 @@ import rich
 import typer
 
 import tfl
-from tfl.cli import AsyncTyper
+from tfl import cli, clients
 
-app = AsyncTyper()
+app = cli.AsyncTyper()
 
 
 def version_callback(version: bool) -> None:
@@ -23,7 +23,7 @@ async def lift_disruptions(
     key: Annotated[Optional[str], typer.Argument(envvar="TFL_API_KEY", help="TFL API key.")] = None,
 ) -> None:
     """Get current lift disruptions."""
-    async with tfl.Client(auth=tfl.Auth(key=key) if key else None) as client:
+    async with clients.LiftDisruptionsV2Client(auth=tfl.clients.Auth(key=key) if key else None) as client:
         response = await client.get_lift_disruptions()
     rich.print(response.json())
     raise typer.Exit()
@@ -34,7 +34,7 @@ async def lift_disruptions(
 def main(
     version: Annotated[
         bool, typer.Option("--version", callback=version_callback, is_eager=True, help="Show the version and exit.")
-    ] = None,  # type: ignore[assignment]
+    ] = False
 ) -> None:
     """tfl: A Python package for the Transport for London (TFL) API."""
     return None
