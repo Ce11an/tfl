@@ -1,4 +1,4 @@
-# How to contribute.
+# How to contribute
 We welcome contributions to this project. There are many ways to contribute, from writing new features, to reporting
 bugs.
 
