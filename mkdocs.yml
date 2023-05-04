@@ -106,9 +106,10 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: index.md
-  - Help: help.md
   - API Reference:
       - Clients:
           - Authentication: client/auth.md
           - TFL Client: client/tfl_client.md
           - Lift Disruptions: client/lift_disruptions_client.md
+  - Help: help.md
+  - Contributing: contributing.md
