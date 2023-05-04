@@ -36,6 +36,7 @@ Before submitting a pull request, please ensure that you have run `pre-commit ru
 ensure your code is formatted correctly, passes all linting checks, and passes all tests.
 
 Please ensure you follow these steps:
+
 1. Fork the repository and create your branch from `main`.
 2. If you've added code that should be tested, add tests.
 3. If you've changed APIs, update the documentation.
