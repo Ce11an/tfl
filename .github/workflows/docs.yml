@@ -11,11 +11,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Build Python
-        uses: ./.github/actions
-
-      - name: Install tools
-        run: poetry install --only dev
-
-      - name: Deploy docs
-        run: poetry run mkdocs gh-deploy --force
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - run: |
+          pip install \
+          mkdocs-material \
+          mkdocstrings[python]
+      - run: mkdocs gh-deploy --force
