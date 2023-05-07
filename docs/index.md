@@ -25,7 +25,13 @@ the plan is to add support for all the TFL APIs. Contributions are welcome!
 ## Installation
 
 ```bash
-poetry install
+pip install py-tfl
+```
+
+or install with [Poetry](https://python-poetry.org/):
+
+```bash
+poetry add py-tfl
 ```
 
 ## ⚡️Quickstart
@@ -46,11 +52,23 @@ provides a fast, async HTTP client.
 ```python
 from tfl import clients
 
+
 async with clients.LiftDisruptionsV2Client() as client:
     response = await client.get_lift_disruptions()
 
 print(response.json())
 ```
+
+## 📈 Releases
+
+You can see the list of available releases on the [GitHub Releases](https://github.com/Ce11an/tfl/releases)
+page.
+
+We follow [Semantic Versions](https://semver.org/) specification.
+
+We use [`Release Drafter`](https://github.com/marketplace/actions/release-drafter). As pull requests are merged, a draft
+release is kept up-to-date listing the changes, ready to publish when you’re ready. With the categories option, you can
+categorize pull requests in release notes using labels.
 
 ## 🛡 License
 
