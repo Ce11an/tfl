@@ -111,5 +111,6 @@ nav:
           - Authentication: client/auth.md
           - TFL Client: client/tfl_client.md
           - Lift Disruptions: client/lift_disruptions_client.md
+          - Accident Stats: client/accident_stats_client.md
   - Help: help.md
   - Contributing: contributing.md

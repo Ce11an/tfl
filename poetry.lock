@@ -73,14 +73,14 @@ uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "certifi"
-version = "2022.12.7"
+version = "2023.5.7"
 description = "Python package for providing Mozilla's CA Bundle."
 category = "main"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "certifi-2022.12.7-py3-none-any.whl", hash = "sha256:4ad3232f5e926d6718ec31cfc1fcadfde020920e278684144551c91769c7bc18"},
-    {file = "certifi-2022.12.7.tar.gz", hash = "sha256:35824b4c3a97115964b408844d64aa14db1cc518f6562e8d7261699d1350a9e3"},
+    {file = "certifi-2023.5.7-py3-none-any.whl", hash = "sha256:c6c2e98f5c7869efca1f8916fed228dd91539f9f1b444c314c06eef02980c716"},
+    {file = "certifi-2023.5.7.tar.gz", hash = "sha256:0f0d56dc5a6ad56fd4ba36484d6cc34451e1c6548c61daad8c320169f91eddc7"},
 ]
 
 [[package]]
@@ -337,14 +337,14 @@ dev = ["flake8", "markdown", "twine", "wheel"]
 
 [[package]]
 name = "griffe"
-version = "0.27.2"
+version = "0.27.3"
 description = "Signatures for entire Python programs. Extract the structure, the frame, the skeleton of your project, to generate API documentation or find breaking changes in your API."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "griffe-0.27.2-py3-none-any.whl", hash = "sha256:8d6bc40e7bede3fb5879598c1f71b8902d245804ab59ae55516f864b2bdc25c6"},
-    {file = "griffe-0.27.2.tar.gz", hash = "sha256:833990074c8c0b323a55f37f72265fdd841cb0a756122303505bf4bc80800e82"},
+    {file = "griffe-0.27.3-py3-none-any.whl", hash = "sha256:094513b209d4acd4b2680c2415d3af5f8ed925714795380c2a7d070e222e0b27"},
+    {file = "griffe-0.27.3.tar.gz", hash = "sha256:a3d0f75aa76b80f181f818cf605f658a69fccf287aaeeeafc7a6cf4e6a2ca27e"},
 ]
 
 [package.dependencies]
@@ -721,14 +721,14 @@ python-legacy = ["mkdocstrings-python-legacy (>=0.2.1)"]
 
 [[package]]
 name = "mkdocstrings-python"
-version = "0.9.0"
+version = "0.10.1"
 description = "A Python handler for mkdocstrings."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "mkdocstrings-python-0.9.0.tar.gz", hash = "sha256:da0a54d7d46523a25a5227f0ecc74b491291bd9d36fc71445bfb0ea64283e287"},
-    {file = "mkdocstrings_python-0.9.0-py3-none-any.whl", hash = "sha256:00e02b5d3d444f9abdec2398f9ba0c73e15deab78685f793f5801fd4d62a5b6f"},
+    {file = "mkdocstrings_python-0.10.1-py3-none-any.whl", hash = "sha256:ef239cee2c688e2b949a0a47e42a141d744dd12b7007311b3309dc70e3bafc5c"},
+    {file = "mkdocstrings_python-0.10.1.tar.gz", hash = "sha256:b72301fff739070ec517b5b36bf2f7c49d1360a275896a64efb97fc17d3f3968"},
 ]
 
 [package.dependencies]
@@ -1175,21 +1175,21 @@ files = [
 
 [[package]]
 name = "requests"
-version = "2.29.0"
+version = "2.30.0"
 description = "Python HTTP for Humans."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "requests-2.29.0-py3-none-any.whl", hash = "sha256:e8f3c9be120d3333921d213eef078af392fba3933ab7ed2d1cba3b56f2568c3b"},
-    {file = "requests-2.29.0.tar.gz", hash = "sha256:f2e34a75f4749019bb0e3effb66683630e4ffeaf75819fb51bebef1bf5aef059"},
+    {file = "requests-2.30.0-py3-none-any.whl", hash = "sha256:10e94cc4f3121ee6da529d358cdaeaff2f1c409cd377dbc72b825852f2f7e294"},
+    {file = "requests-2.30.0.tar.gz", hash = "sha256:239d7d4458afcb28a692cdd298d87542235f4ca8d36d03a15bfc128a6559a2f4"},
 ]
 
 [package.dependencies]
 certifi = ">=2017.4.17"
 charset-normalizer = ">=2,<4"
 idna = ">=2.5,<4"
-urllib3 = ">=1.21.1,<1.27"
+urllib3 = ">=1.21.1,<3"
 
 [package.extras]
 socks = ["PySocks (>=1.5.6,!=1.5.7)"]
@@ -1217,29 +1217,29 @@ jupyter = ["ipywidgets (>=7.5.1,<9)"]
 
 [[package]]
 name = "ruff"
-version = "0.0.264"
+version = "0.0.265"
 description = "An extremely fast Python linter, written in Rust."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "ruff-0.0.264-py3-none-macosx_10_7_x86_64.whl", hash = "sha256:ec2fa192c035b8b68cc2b91049c561cd69543e2b8c4d157d9aa7727320bedcca"},
-    {file = "ruff-0.0.264-py3-none-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:d97ba8db0fb601ffe9ee996ebb97c698e427a2fd4514fefbe7b803111354f783"},
-    {file = "ruff-0.0.264-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:4564e0f245eb515c6ed63988c21e9c40bcfd485cd1ec63bdd790f9a81d301f15"},
-    {file = "ruff-0.0.264-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:323ae6c1702b26c96d0fbf939c5959c37e79021f86b70f63634df918bc77f36e"},
-    {file = "ruff-0.0.264-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:18a29ed37bf8cfe6dce8a2db56c313a64c0804095108753621f3c3321e0c9c5f"},
-    {file = "ruff-0.0.264-py3-none-manylinux_2_17_ppc64.manylinux2014_ppc64.whl", hash = "sha256:d628de91e2be7a83128526636097d2dd890669a06143f826f6c591d79aeefbc4"},
-    {file = "ruff-0.0.264-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:91c6eb4f979b661a2dd850d9ac803842bb7b66d4926de84f09c787af82590f73"},
-    {file = "ruff-0.0.264-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:04ec5d75e4bca754cedd20d53e2ba4920d6259e7579abfb2e8e30c3c80e41b17"},
-    {file = "ruff-0.0.264-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:71fd865ebacc1083259b3fb7e3eb45235a86e62e21830b8a6b067be0ec54aa2e"},
-    {file = "ruff-0.0.264-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:cd4f60ffc3eb15802c554a9c8581bf2117c4d3d06fbc57e0ba58f04cb1aaa47f"},
-    {file = "ruff-0.0.264-py3-none-musllinux_1_2_armv7l.whl", hash = "sha256:05ee163a046fc593d150179d23f4af447fb82f3e59cd34e031ea0868c65bb8e8"},
-    {file = "ruff-0.0.264-py3-none-musllinux_1_2_i686.whl", hash = "sha256:484e395d1984ab9e1e66bd42e7a5192decfee86998d07d36ee50b2fadccc8734"},
-    {file = "ruff-0.0.264-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:67326fdc9ac0a1b13e229c6e24e8d115863c52cd710faaaaa588851535281d6c"},
-    {file = "ruff-0.0.264-py3-none-win32.whl", hash = "sha256:5a8658ebcc37d62f72840cbdf564171c1a2b6831db482b4d917962541a2f4a44"},
-    {file = "ruff-0.0.264-py3-none-win_amd64.whl", hash = "sha256:068a82a29d80848a56e3d9d4308e6e0ca8b2ecdaf5ac342a292545a59b7f2c21"},
-    {file = "ruff-0.0.264-py3-none-win_arm64.whl", hash = "sha256:3e2c38449548e122f2612843a7c04e22b4fd491656955c57b8cb05df11639ad6"},
-    {file = "ruff-0.0.264.tar.gz", hash = "sha256:8fcd4b693ca1374eb7a5796581c90689f884f98f388740d94f0702fd30f8f78f"},
+    {file = "ruff-0.0.265-py3-none-macosx_10_7_x86_64.whl", hash = "sha256:30ddfe22de6ce4eb1260408f4480bbbce998f954dbf470228a21a9b2c45955e4"},
+    {file = "ruff-0.0.265-py3-none-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:a11bd0889e88d3342e7bc514554bb4461bf6cc30ec115821c2425cfaac0b1b6a"},
+    {file = "ruff-0.0.265-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2a9b38bdb40a998cbc677db55b6225a6c4fadcf8819eb30695e1b8470942426b"},
+    {file = "ruff-0.0.265-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:a8b44a245b60512403a6a03a5b5212da274d33862225c5eed3bcf12037eb19bb"},
+    {file = "ruff-0.0.265-py3-none-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:b279fa55ea175ef953208a6d8bfbcdcffac1c39b38cdb8c2bfafe9222add70bb"},
+    {file = "ruff-0.0.265-py3-none-manylinux_2_17_ppc64.manylinux2014_ppc64.whl", hash = "sha256:5028950f7af9b119d43d91b215d5044976e43b96a0d1458d193ef0dd3c587bf8"},
+    {file = "ruff-0.0.265-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:4057eb539a1d88eb84e9f6a36e0a999e0f261ed850ae5d5817e68968e7b89ed9"},
+    {file = "ruff-0.0.265-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:d586e69ab5cbf521a1910b733412a5735936f6a610d805b89d35b6647e2a66aa"},
+    {file = "ruff-0.0.265-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:aa17b13cd3f29fc57d06bf34c31f21d043735cc9a681203d634549b0e41047d1"},
+    {file = "ruff-0.0.265-py3-none-musllinux_1_2_aarch64.whl", hash = "sha256:9ac13b11d9ad3001de9d637974ec5402a67cefdf9fffc3929ab44c2fcbb850a1"},
+    {file = "ruff-0.0.265-py3-none-musllinux_1_2_armv7l.whl", hash = "sha256:62a9578b48cfd292c64ea3d28681dc16b1aa7445b7a7709a2884510fc0822118"},
+    {file = "ruff-0.0.265-py3-none-musllinux_1_2_i686.whl", hash = "sha256:d0f9967f84da42d28e3d9d9354cc1575f96ed69e6e40a7d4b780a7a0418d9409"},
+    {file = "ruff-0.0.265-py3-none-musllinux_1_2_x86_64.whl", hash = "sha256:1d5a8de2fbaf91ea5699451a06f4074e7a312accfa774ad9327cde3e4fda2081"},
+    {file = "ruff-0.0.265-py3-none-win32.whl", hash = "sha256:9e9db5ccb810742d621f93272e3cc23b5f277d8d00c4a79668835d26ccbe48dd"},
+    {file = "ruff-0.0.265-py3-none-win_amd64.whl", hash = "sha256:f54facf286103006171a00ce20388d88ed1d6732db3b49c11feb9bf3d46f90e9"},
+    {file = "ruff-0.0.265-py3-none-win_arm64.whl", hash = "sha256:c78470656e33d32ddc54e8482b1b0fc6de58f1195586731e5ff1405d74421499"},
+    {file = "ruff-0.0.265.tar.gz", hash = "sha256:53c17f0dab19ddc22b254b087d1381b601b155acfa8feed514f0d6a413d0ab3a"},
 ]
 
 [[package]]
@@ -1346,20 +1346,21 @@ files = [
 
 [[package]]
 name = "urllib3"
-version = "1.26.15"
+version = "2.0.2"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 category = "dev"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
+python-versions = ">=3.7"
 files = [
-    {file = "urllib3-1.26.15-py2.py3-none-any.whl", hash = "sha256:aa751d169e23c7479ce47a0cb0da579e3ede798f994f5816a74e4f4500dcea42"},
-    {file = "urllib3-1.26.15.tar.gz", hash = "sha256:8a388717b9476f934a21484e8c8e61875ab60644d29b9b39e11e4b9dc1c6b305"},
+    {file = "urllib3-2.0.2-py3-none-any.whl", hash = "sha256:d055c2f9d38dc53c808f6fdc8eab7360b6fdbbde02340ed25cfbcd817c62469e"},
+    {file = "urllib3-2.0.2.tar.gz", hash = "sha256:61717a1095d7e155cdb737ac7bb2f4324a858a1e2e6466f6d03ff630ca68d3cc"},
 ]
 
 [package.extras]
-brotli = ["brotli (>=1.0.9)", "brotlicffi (>=0.8.0)", "brotlipy (>=0.6.0)"]
-secure = ["certifi", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "ipaddress", "pyOpenSSL (>=0.14)", "urllib3-secure-extra"]
-socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
+brotli = ["brotli (>=1.0.9)", "brotlicffi (>=0.8.0)"]
+secure = ["certifi", "cryptography (>=1.9)", "idna (>=2.0.0)", "pyopenssl (>=17.1.0)", "urllib3-secure-extra"]
+socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
+zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
 name = "virtualenv"
