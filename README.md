@@ -1,6 +1,6 @@
 # tfl
 
-![TFL-Image.jpg](https://github.com/Ce11an/tfl/blob/main/assets/TFL-Image.jpg)
+![TFL-Image.jpg](https://github.com/Ce11an/tfl/raw/main/assets/TFL-Image.jpg)
 
 [![Python](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-blue)](https://www.python.org/downloads/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
