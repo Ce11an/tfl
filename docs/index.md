@@ -42,7 +42,7 @@ The TFL CLI provides a command line interface to the TFL API. It is built on top
 [Typer](https://typer.tiangolo.com/), which provides easy way to build command line interfaces.
 
 ```bash
-poetry run tfl --help
+tfl --help
 ```
 
 ### 🦋 Client
