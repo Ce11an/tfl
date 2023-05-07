@@ -19,7 +19,8 @@ call the API more than that, you'll need to subscribe to a "Product" which lets 
 subscription-key that you append to your requests.
 
 Currently, this package only supports the
-[Lift Disruptions API](https://api-portal.tfl.gov.uk/api-details#api=Disruptions-Lifts-v2&operation=get). However,
+[Lift Disruptions API](https://api-portal.tfl.gov.uk/api-details#api=Disruptions-Lifts-v2&operation=get) and
+[Accident Stats API](https://api-portal.tfl.gov.uk/api-details#api=AccidentStats&operation=AccidentStats_Get). However,
 the plan is to add support for all the TFL APIs. Contributions are welcome!
 
 ## Installation

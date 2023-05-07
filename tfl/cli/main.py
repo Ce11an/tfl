@@ -1,4 +1,5 @@
 """Main module for the tfl CLI."""
+
 from typing import Optional
 
 import rich
@@ -25,6 +26,18 @@ async def lift_disruptions(
     """Get current lift disruptions."""
     async with clients.LiftDisruptionsV2Client(auth=tfl.clients.Auth(key=key) if key else None) as client:
         response = await client.get_lift_disruptions()
+    rich.print(response.json())
+    raise typer.Exit()
+
+
+@app.async_command()
+async def accident_stats(
+    year: Annotated[int, typer.Argument(help="The year to get accident stats for.")],
+    key: Annotated[Optional[str], typer.Argument(envvar="TFL_API_KEY", help="TFL API key.")] = None,
+) -> None:
+    """Gets all accident details for accidents occurring in the specified year."""
+    async with clients.AccidentStatsClient(auth=tfl.clients.Auth(key=key) if key else None) as client:
+        response = await client.get_accident_stats(year=year)
     rich.print(response.json())
     raise typer.Exit()
 

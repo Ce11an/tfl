@@ -1,7 +1,7 @@
 """Test the tfl CLI."""
 from typer.testing import CliRunner
 
-from tests.static_vars import LIFT_DISRUPTIONS
+from tests.static_vars import ACCIDENT_STATS_AFTER_2020, ACCIDENT_STATS_BEFORE_2020, LIFT_DISRUPTIONS
 from tfl.cli.main import app
 
 runner = CliRunner()
@@ -43,3 +43,23 @@ class TestApp:
         )
         result = runner.invoke(app, ["lift-disruptions"])
         assert "[\n" in result.stdout
+
+    def test_accident_stats_before_2020(self, httpx_mock) -> None:
+        """Test the accident-stats command before 2020."""
+        httpx_mock.add_response(
+            url="https://api.tfl.gov.uk/AccidentStats/2019",
+            json=ACCIDENT_STATS_BEFORE_2020,
+            method="GET",
+        )
+        result = runner.invoke(app, ["accident-stats", "2019"])
+        assert "[\n" in result.stdout
+
+    def test_accident_stats_after_2020(self, httpx_mock) -> None:
+        """Test the accident-stats command after 2020."""
+        httpx_mock.add_response(
+            url="https://api.tfl.gov.uk/AccidentStats/2020",
+            json=ACCIDENT_STATS_AFTER_2020,
+            method="GET",
+        )
+        result = runner.invoke(app, ["accident-stats", "2020"])
+        assert "{\n" in result.stdout
