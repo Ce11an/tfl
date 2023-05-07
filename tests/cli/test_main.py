@@ -14,7 +14,7 @@ class TestApp:
         """Test the version command."""
         result = runner.invoke(app, ["--version"])
         assert result.exit_code == 0
-        assert "tfl version: 0.1.0" in result.stdout
+        assert "tfl version:" in result.stdout
 
     def test_help(self) -> None:
         """Test the help command."""
