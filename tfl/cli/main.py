@@ -42,6 +42,17 @@ async def accident_stats(
     raise typer.Exit()
 
 
+@app.async_command()
+async def air_quality(
+    key: Annotated[Optional[str], typer.Argument(envvar="TFL_API_KEY", help="TFL API key.")] = None,
+) -> None:
+    """Get air quality data feed."""
+    async with clients.AirQualityClient(auth=tfl.clients.Auth(key=key) if key else None) as client:
+        response = await client.get_air_quality()
+    rich.print(response.json())
+    raise typer.Exit()
+
+
 # noinspection PyUnusedLocal
 @app.callback()
 def main(
