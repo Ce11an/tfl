@@ -58,3 +58,64 @@ ACCIDENT_STATS_AFTER_2020 = {
     "relativeUri": "/AccidentStats/2020",
     "message": "The following year is not recognised: 2020",
 }
+
+AIR_QUALITY = {
+    "$id": "1",
+    "$type": "Tfl.Api.Presentation.Entities.LondonAirForecast, Tfl.Api.Presentation.Entities",
+    "updatePeriod": "hourly",
+    "updateFrequency": "1",
+    "forecastURL": "http://londonair.org.uk/forecast",
+    "disclaimerText": "This forecast is intended to provide information on expected pollution levels in areas of "
+    "significant public exposure. It may not apply in very specific locations close to unusually "
+    "strong or short-lived local sources of pollution.",
+    "currentForecast": [
+        {
+            "$id": "2",
+            "$type": "Tfl.Api.Presentation.Entities.CurrentForecast, Tfl.Api.Presentation.Entities",
+            "forecastType": "Current",
+            "forecastID": "40578",
+            "publishedDate": "2023-09-05T10:39:46Z",
+            "fromDate": "2023-09-05T00:00:00Z",
+            "toDate": "2023-11-05T23:59:00Z",
+            "forecastBand": "Low",
+            "forecastSummary": "Low air pollution forecast valid from Tuesday 9 May to end of Thursday 11 May GMT",
+            "nO2Band": "Low",
+            "o3Band": "Low",
+            "pM10Band": "Low",
+            "pM25Band": "Low",
+            "sO2Band": "Low",
+            "forecastText": "Sunny spells and scattered shower, potentially heavy and"
+            " slow-moving.&lt;br/&gt;&lt;br/&gt;A "
+            "&#39;clean&#39; westerly Atlantic air feed is expected, with a light breeze aiding dispersion "
+            "of local emissions and minimal import. &lt;br/&gt;&lt;br/&gt;Air pollution is expected to "
+            "remain in the &#39;Low&#39; banding throughout the forecast period for the following "
+            "pollutants:&lt;br/&gt;&lt;br/&gt;Nitrogen dioxide&lt;br/&gt;Ozone&lt;br/&gt;PM2.5 "
+            "Particulates&lt;br/&gt;PM10 Particulates&lt;br/&gt;Sulphur "
+            "dioxide&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;",
+        },
+        {
+            "$id": "3",
+            "$type": "Tfl.Api.Presentation.Entities.CurrentForecast, Tfl.Api.Presentation.Entities",
+            "forecastType": "Future",
+            "forecastID": "40578",
+            "publishedDate": "2023-09-05T10:39:46Z",
+            "fromDate": "2023-09-05T00:00:00Z",
+            "toDate": "2023-11-05T23:59:00Z",
+            "forecastBand": "Low",
+            "forecastSummary": "Low air pollution forecast valid from Tuesday 9 May to end of Thursday 11 May GMT",
+            "nO2Band": "Low",
+            "o3Band": "Low",
+            "pM10Band": "Low",
+            "pM25Band": "Low",
+            "sO2Band": "Low",
+            "forecastText": "Sunny spells and scattered shower, potentially heavy and "
+            "slow-moving.&lt;br/&gt;&lt;br/&gt;A "
+            "&#39;clean&#39; westerly Atlantic air feed is expected, with a light breeze aiding dispersion "
+            "of local emissions and minimal import. &lt;br/&gt;&lt;br/&gt;Air pollution is expected to "
+            "remain in the &#39;Low&#39; banding throughout the forecast period for the following "
+            "pollutants:&lt;br/&gt;&lt;br/&gt;Nitrogen dioxide&lt;br/&gt;Ozone&lt;br/&gt;PM2.5 "
+            "Particulates&lt;br/&gt;PM10 Particulates&lt;br/&gt;Sulphur "
+            "dioxide&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;",
+        },
+    ],
+}

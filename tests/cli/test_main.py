@@ -1,7 +1,7 @@
 """Test the tfl CLI."""
 from typer.testing import CliRunner
 
-from tests.static_vars import ACCIDENT_STATS_AFTER_2020, ACCIDENT_STATS_BEFORE_2020, LIFT_DISRUPTIONS
+from tests.static_vars import ACCIDENT_STATS_AFTER_2020, ACCIDENT_STATS_BEFORE_2020, AIR_QUALITY, LIFT_DISRUPTIONS
 from tfl.cli.main import app
 
 runner = CliRunner()
@@ -62,4 +62,15 @@ class TestApp:
             method="GET",
         )
         result = runner.invoke(app, ["accident-stats", "2020"])
+        assert "{\n" in result.stdout
+
+    def test_air_quality(self, httpx_mock) -> None:
+        """Test the air-quality command."""
+        httpx_mock.add_response(
+            url="https://api.tfl.gov.uk/AirQuality",
+            json=AIR_QUALITY,
+            method="GET",
+        )
+        result = runner.invoke(app, ["air-quality"])
+        assert result.exit_code == 0
         assert "{\n" in result.stdout
