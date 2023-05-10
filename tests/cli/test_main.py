@@ -1,7 +1,14 @@
 """Test the tfl CLI."""
+
 from typer.testing import CliRunner
 
-from tests.static_vars import ACCIDENT_STATS_AFTER_2020, ACCIDENT_STATS_BEFORE_2020, AIR_QUALITY, LIFT_DISRUPTIONS
+from tests.static_vars import (
+    ACCIDENT_STATS_AFTER_2020,
+    ACCIDENT_STATS_BEFORE_2020,
+    AIR_QUALITY,
+    CROWDING_NAPTAN,
+    LIFT_DISRUPTIONS,
+)
 from tfl.cli.main import app
 
 runner = CliRunner()
@@ -74,3 +81,28 @@ class TestApp:
         result = runner.invoke(app, ["air-quality"])
         assert result.exit_code == 0
         assert "{\n" in result.stdout
+
+    def test_get_crowding_day_none(self, httpx_mock) -> None:
+        """Test the `get_crowding` method with day as `None`."""
+        httpx_mock.add_response(
+            url="https://api.tfl.gov.uk/crowding/940GZZLUBND",
+            json=CROWDING_NAPTAN,
+            method="GET",
+        )
+        result = runner.invoke(app, ["crowding", "940GZZLUBND"])
+        assert "{\n" in result.stdout
+
+    def test_get_crowding_with_day(self, httpx_mock) -> None:
+        """Test the `get_crowding` with day as `enums.DayOfWeekEnum`."""
+        httpx_mock.add_response(
+            url="https://api.tfl.gov.uk/crowding/940GZZLUBND/Fri",
+            json=CROWDING_NAPTAN,
+            method="GET",
+        )
+        result = runner.invoke(app, ["crowding", "940GZZLUBND", "Fri"])
+        assert "{\n" in result.stdout
+
+    def test_get_crowding_with_invalid_day(self) -> None:
+        """Test the `get_crowding` with an invalid day."""
+        result = runner.invoke(app, ["crowding", "940GZZLUBND", "Friday"])
+        assert isinstance(result.exception, ValueError)

@@ -2,4 +2,4 @@
 
 __version__ = "0.3.0"
 
-from tfl import cli, clients
+from tfl import cli, clients, enums

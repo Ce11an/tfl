@@ -7,6 +7,7 @@ import typer
 from typing_extensions import Annotated
 
 import tfl
+import tfl.enums
 from tfl import cli, clients
 
 app = cli.AsyncTyper()
@@ -38,6 +39,26 @@ async def accident_stats(
     """Gets all accident details for accidents occurring in the specified year."""
     async with clients.AccidentStatsClient(auth=tfl.clients.Auth(key=key) if key else None) as client:
         response = await client.get_accident_stats(year=year)
+    rich.print(response.json())
+    raise typer.Exit()
+
+
+@app.async_command()
+async def crowding(
+    naptan_code: Annotated[str, typer.Argument(help="The NAPTAN code of the station to get crowding for.")],
+    day: Annotated[
+        Optional[str],
+        typer.Argument(
+            help="The day to get crowding information for. The options are 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', "
+            "'Sun', 'Live'."
+        ),
+    ] = None,
+    key: Annotated[Optional[str], typer.Argument(envvar="TFL_API_KEY", help="TFL API key.")] = None,
+) -> None:
+    """Information about crowding levels within TFL stations."""
+    day = tfl.enums.DayOfWeekEnum(day) if day else None
+    async with clients.CrowdingClient(auth=tfl.clients.Auth(key=key) if key else None) as client:
+        response = await client.get_crowding(naptan_code=naptan_code, day=day)
     rich.print(response.json())
     raise typer.Exit()
 

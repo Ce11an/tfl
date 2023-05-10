@@ -112,6 +112,8 @@ nav:
           - TFL Client: client/tfl_client.md
           - Air Quality Client: client/air_quality_client.md
           - Accident Stats Client: client/accident_stats_client.md
+          - Crowding Client: client/crowding_client.md
           - Lift Disruptions Client: client/lift_disruptions_client.md
+      - Enums: enums.md
   - Help: help.md
   - Contributing: contributing.md
