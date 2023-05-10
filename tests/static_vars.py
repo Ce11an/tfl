@@ -119,3 +119,30 @@ AIR_QUALITY = {
         },
     ],
 }
+
+
+CROWDING_NAPTAN = {
+    "naptan": "940GZZLUBND",
+    "daysOfWeek": [
+        {
+            "dayOfWeek": "FRI",
+            "amPeakTimeBand": "07:45-09:45",
+            "pmPeakTimeBand": "17:00-19:00",
+            "timeBands": [
+                {"timeBand": "00:00-00:15", "percentageOfBaseLine": 0.07},
+                {"timeBand": "00:15-00:30", "percentageOfBaseLine": 0.06},
+                {"timeBand": "00:30-00:45", "percentageOfBaseLine": 0.05},
+                {"timeBand": "00:45-01:00", "percentageOfBaseLine": 0.04},
+                {"timeBand": "01:00-01:15", "percentageOfBaseLine": 0.03},
+                {"timeBand": "01:15-01:30", "percentageOfBaseLine": 0.02},
+                {"timeBand": "01:30-01:45", "percentageOfBaseLine": 0.01},
+                {"timeBand": "01:45-02:00", "percentageOfBaseLine": 0.01},
+                {"timeBand": "02:00-02:15", "percentageOfBaseLine": 0.01},
+                {"timeBand": "02:15-02:30", "percentageOfBaseLine": 0.01},
+                {"timeBand": "02:30-02:45", "percentageOfBaseLine": 0.01},
+                {"timeBand": "02:45-03:00", "percentageOfBaseLine": 0.01},
+                {"timeBand": "03:00-03:15", "percentageOfBaseLine": 0.01},
+            ],
+        }
+    ],
+}

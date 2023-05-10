@@ -22,6 +22,7 @@ Currently, we support the following APIs:
 
 - [Accident Stats API](https://api-portal.tfl.gov.uk/api-details#api=AccidentStats&operation=AccidentStats_Get)
 - [Air Quality API](https://api-portal.tfl.gov.uk/api-details#api=AirQuality&operation=AirQuality_Get)
+- [Crowding API](https://api-portal.tfl.gov.uk/api-details#api=crowding&operation=dayofweek)
 - [Lift Disruptions API](https://api-portal.tfl.gov.uk/api-details#api=Disruptions-Lifts-v2&operation=get)
 
 The plan is to add support for all the TFL APIs. Contributions are welcome!
