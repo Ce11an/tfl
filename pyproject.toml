@@ -44,7 +44,7 @@ pytest = "~=7.3.1"
 pytest-cov = "~=4.0.0"
 pytest-httpx = "~=0.22.0"
 pytest-asyncio = "~=0.21.0"
-mkdocs-material = "~=9.1.9"
+mkdocs-material = "~=9.1.12"
 mkdocstrings = {extras = ["python"], version = "~=0.21.2"}
 
 [tool.black]
