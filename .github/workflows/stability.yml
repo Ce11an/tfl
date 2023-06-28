@@ -27,12 +27,12 @@ jobs:
 
       - id: ruff
         if: always()
-        run: poetry run ruff --format=github tfl/
+        run: make check-ruff
 
       - id: Black
         if: always()
-        run: poetry run black tfl/ --check --verbose --diff --color
+        run: make check-black
 
       - id: mypy
         if: always()
-        run: poetry run mypy tfl/
+        run: make check-mypy
