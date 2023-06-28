@@ -10,6 +10,8 @@ information.
 
 ## Contributing code
 
+Check the Makefile for useful commands to help you get started.
+
 ### Dependencies
 We use [Poetry](https://python-poetry.org/) to manage dependencies. Please install Poetry before contributing code.
 We also utilise [pre-commit](https://pre-commit.com/) to manage pre-commit hooks. Please install pre-commit before
@@ -24,7 +26,7 @@ formatted correctly and passes all linting checks.
 
 ### Testing
 We use [pytest](https://docs.pytest.org/en/stable/) to test our code. Please write tests for all new code you write.
-You can run all tests by running `pytest` in the root directory of this project.
+You can run all tests by running `make test` in the root directory of this project.
 
 ## Contributing to documentation
 We welcome contributions to our documentation. You can find the documentation in the `docs` directory. We use

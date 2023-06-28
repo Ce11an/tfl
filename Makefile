@@ -1,27 +1,30 @@
-#* Variables
-SHELL := /usr/bin/env bash
-PYTHON := python
-
 .PHONY: codestyle
 codestyle:
 	poetry run ruff --fix .
 	poetry run black .
 
+.PHONY: check-ruff
+check-ruff: ## Check that code conforms to ruff rules.
+	poetry run ruff . --format=github
+
+.PHONY: check-black
+check-black: ## Check that code conforms with black style.
+	poetry run black . --check --verbose --diff --color
+
 .PHONY: formatting
-formatting: codestyle
+formatting: codestyle ## Format your code.
 
 .PHONY: test
-test:
-	poetry run pytest --cov-report=html --cov=tfl tests/
+test: ## Run unit tests.
+	poetry run pytest --cov=tfl --cov-report term --cov-report xml:coverage.xml --cov-report=html tests/
 
-.PHONY: mypy
-mypy:
+.PHONY: build-docs
+build-docs:
+	poetry run mkdocs build --verbose --clean --strict --site-dir public
+
+.PHONY: check-mypy
+check-mypy: ## Check for typing errors.
 	poetry run mypy .
-
-.PHONY: update-dev-deps
-update-dev-deps:
-	poetry add -D bandit@latest darglint@latest "isort[colors]@latest" mypy@latest pre-commit@latest pydocstyle@latest pylint@latest pytest@latest pyupgrade@latest coverage@latest coverage-badge@latest pytest-html@latest pytest-cov@latest
-	poetry add -D --allow-prereleases black@latest
 
 .PHONY: pycache-remove
 pycache-remove:
@@ -51,6 +54,18 @@ build-remove:
 coverage-remove:
 	rm -rf .coverage
 	rm -rf htmlcov/
+	rm -rf coverage.xml
+
+.PHONY: public-remove
+public-remove:
+	rm -rf public
 
 .PHONY: cleanup
-cleanup: pycache-remove dsstore-remove mypycache-remove pytestcache-remove build-remove coverage-remove ruff-remove
+cleanup: pycache-remove dsstore-remove mypycache-remove pytestcache-remove build-remove coverage-remove ruff-remove public-remove ## Cleanup residual files.
+
+.DEFAULT_GOAL := help
+
+.PHONY: help
+# See <https://gist.github.com/klmr/575726c7e05d8780505a> for explanation.
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
