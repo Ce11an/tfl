@@ -1,9 +1,10 @@
 """Main module for the tfl CLI."""
-
-from typing import Optional
+from typing import Any, Dict, Optional, Tuple
 
 import rich
 import typer
+from rich.console import Console
+from rich.table import Table
 from typing_extensions import Annotated
 
 import tfl
@@ -11,6 +12,7 @@ import tfl.enums
 from tfl import cli, clients
 
 app = cli.AsyncTyper()
+console = Console()
 
 
 def version_callback(version: bool) -> None:
@@ -25,9 +27,25 @@ async def lift_disruptions(
     key: Annotated[Optional[str], typer.Argument(envvar="TFL_API_KEY", help="TFL API key.")] = None,
 ) -> None:
     """Get current lift disruptions."""
+
+    def _create_table_row(resp_json: Dict[str, Any]) -> Tuple[str, str]:
+        """Create a table row from a disruption."""
+        split_message = resp_json["message"].split(":")
+        return split_message[0], split_message[1].replace(" No Step Free Access - ", "")
+
     async with clients.LiftDisruptionsV2Client(auth=tfl.clients.Auth(key=key) if key else None) as client:
         response = await client.get_lift_disruptions()
-    rich.print(response.json())
+    table = Table(
+        "Station",
+        "Message",
+        title="Lift Disruptions",
+        caption="Current TFL lift disruptions.",
+        expand=True,
+        padding=(1, 1),
+    )
+    for disruption in response.json():
+        table.add_row(*_create_table_row(disruption))
+    console.print(table)
     raise typer.Exit()
 
 
