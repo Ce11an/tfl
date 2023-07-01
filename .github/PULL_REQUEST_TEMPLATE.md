@@ -14,15 +14,15 @@ Thank you for submitting this pull request! We appreciate you spending the time 
 
 ## Before submitting
 
-<!-- Please make sure you've completed the following steps before submitting this merge request. -->
+<!-- Please make sure you've completed the following steps before submitting this pull request. -->
 
 - [ ] Did you verify new and existing tests pass locally with your changes?
 - [ ] Did you update the documentation?
-- [ ] Did you list all breaking changes introduced by this merge request?
+- [ ] Did you list all breaking changes introduced by this pull request?
 
-## Merge Request Reviewer Checklist
+## Pull Request Reviewer Checklist
 
-<!-- Please make sure you've completed the following steps before accepting this merge request. -->
+<!-- Please make sure you've completed the following steps before accepting this pull request. -->
 
 - [ ] Did you verify the code runs locally?
 - [ ] Did you verify the code follows the style guidelines of this project?
