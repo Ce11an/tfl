@@ -8,32 +8,11 @@ from tests.static_vars import (
     AIR_QUALITY,
     CROWDING_NAPTAN,
     LIFT_DISRUPTIONS,
+    LIFT_DISRUPTIONS_TABLE,
 )
 from tfl.cli.main import app
 
 runner = CliRunner()
-
-LIFT_DISRUPTIONS_SUCCESS = """                                Lift Disruptions
-┏━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃           ┃                                                                  ┃
-┃ Station   ┃ Message                                                          ┃
-┃           ┃                                                                  ┃
-┡━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│           │                                                                  │
-│ Shenfield │ Step-free access is not available to the Greater Anglia          │
-│           │ platforms 3 and 4 and the Elizabeth line platforms 5 and 6 due   │
-│           │ to faulty lifts. Call us on 0343 222 1234 if youneed help        │
-│           │ planning your journey.                                           │
-│           │                                                                  │
-│           │                                                                  │
-│ Taplow    │ Step free access is not available between the entrance on Bath   │
-│           │ Road and the footbridge. For step free access, use the entrance  │
-│           │ on Approach Road. Call 0343 222 1234 if you need help planning   │
-│           │ your journey.                                                    │
-│           │                                                                  │
-└───────────┴──────────────────────────────────────────────────────────────────┘
-                         Current TFL lift disruptions.
-"""
 
 
 class TestApp:
@@ -60,7 +39,7 @@ class TestApp:
         )
         result = runner.invoke(app, ["lift-disruptions"])
         assert result.exit_code == 0
-        assert result.stdout == LIFT_DISRUPTIONS_SUCCESS
+        assert result.stdout == LIFT_DISRUPTIONS_TABLE
 
     def test_lift_disruptions_with_key_env(self, httpx_mock, monkeypatch) -> None:
         """Test the lift-disruptions command with the TFL_API_KEY environment variable."""
@@ -71,7 +50,7 @@ class TestApp:
             method="GET",
         )
         result = runner.invoke(app, ["lift-disruptions"])
-        assert result.stdout == LIFT_DISRUPTIONS_SUCCESS
+        assert result.stdout == LIFT_DISRUPTIONS_TABLE
 
     def test_accident_stats_before_2020(self, httpx_mock) -> None:
         """Test the accident-stats command before 2020."""
