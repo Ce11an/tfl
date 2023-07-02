@@ -86,9 +86,27 @@ async def air_quality(
     key: Annotated[Optional[str], typer.Argument(envvar="TFL_API_KEY", help="TFL API key.")] = None,
 ) -> None:
     """Get air quality data feed."""
+
+    def _create_table_row(resp_json: Dict[str, Any]) -> Tuple[str, str]:
+        """Create a table row from a air quality response."""
+        current_forecast = resp_json["currentForecast"][0]
+        return current_forecast["forecastBand"], current_forecast["forecastSummary"]
+
     async with clients.AirQualityClient(auth=tfl.clients.Auth(key=key) if key else None) as client:
         response = await client.get_air_quality()
-    rich.print(response.json())
+
+    data = response.json()
+    table = Table(
+        "Air Pollution Banding",
+        "Summary",
+        title="Today's Air Quality",
+        caption=f"{data['disclaimerText']} \n\nFor more information, please visit: {data['forecastURL']}",
+        expand=True,
+        padding=(1, 1),
+        caption_justify="left",
+    )
+    table.add_row(*_create_table_row(data))
+    console.print(table)
     raise typer.Exit()
 
 

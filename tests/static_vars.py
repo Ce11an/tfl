@@ -141,6 +141,24 @@ AIR_QUALITY = {
     ],
 }
 
+AIR_QUALITY_TABLE = """                              Today's Air Quality                               
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                       ┃                                                      ┃
+┃ Air Pollution Banding ┃ Summary                                              ┃
+┃                       ┃                                                      ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│                       │                                                      │
+│ Low                   │ Low air pollution forecast valid from Tuesday 9 May  │
+│                       │ to end of Thursday 11 May GMT                        │
+│                       │                                                      │
+└───────────────────────┴──────────────────────────────────────────────────────┘
+This forecast is intended to provide information on expected pollution levels in
+areas of significant public exposure. It may not apply in very specific         
+locations close to unusually strong or short-lived local sources of pollution.  
+                                                                                
+For more information, please visit: http://londonair.org.uk/forecast            
+"""
+
 
 CROWDING_NAPTAN = {
     "naptan": "940GZZLUBND",

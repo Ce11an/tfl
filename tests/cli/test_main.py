@@ -6,6 +6,7 @@ from tests.static_vars import (
     ACCIDENT_STATS_AFTER_2020,
     ACCIDENT_STATS_BEFORE_2020,
     AIR_QUALITY,
+    AIR_QUALITY_TABLE,
     CROWDING_NAPTAN,
     LIFT_DISRUPTIONS,
     LIFT_DISRUPTIONS_TABLE,
@@ -81,7 +82,7 @@ class TestApp:
         )
         result = runner.invoke(app, ["air-quality"])
         assert result.exit_code == 0
-        assert "{\n" in result.stdout
+        assert result.stdout == AIR_QUALITY_TABLE
 
     def test_get_crowding_day_none(self, httpx_mock) -> None:
         """Test the `get_crowding` method with day as `None`."""
