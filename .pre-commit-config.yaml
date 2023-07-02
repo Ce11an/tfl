@@ -10,6 +10,7 @@ repos:
     -   id: check-yaml
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
+        exclude: '^static_vars\.py$'
 
 - repo: https://github.com/charliermarsh/ruff-pre-commit
   rev: v0.0.267
