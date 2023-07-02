@@ -1,9 +1,13 @@
-"""Test the crowding client class."""
+"""Test the crowding handler class."""
 
+import httpx
 import pytest
 
 from tests.static_vars import CROWDING_NAPTAN
-from tfl import clients, enums
+from tfl import enums
+
+# noinspection PyProtectedMember
+from tfl.clients.handlers._crowding_handler import CrowdingHandler
 
 
 class TestCrowdingClient:
@@ -20,8 +24,8 @@ class TestCrowdingClient:
             json=CROWDING_NAPTAN,
             method="GET",
         )
-        async with clients.CrowdingClient() as client:
-            response = await client.get_crowding(naptan_code=self.naptan_code)
+        async with httpx.AsyncClient(base_url="https://api.tfl.gov.uk") as client:
+            response = await CrowdingHandler(client).get_crowding(naptan_code=self.naptan_code)
         assert response.status_code == 200
         assert response.json() == CROWDING_NAPTAN
 
@@ -33,7 +37,9 @@ class TestCrowdingClient:
             json=CROWDING_NAPTAN,
             method="GET",
         )
-        async with clients.CrowdingClient() as client:
-            response = await client.get_crowding(naptan_code=self.naptan_code, day=enums.DayOfWeekEnum.FRIDAY)
+        async with httpx.AsyncClient(base_url="https://api.tfl.gov.uk") as client:
+            response = await CrowdingHandler(client).get_crowding(
+                naptan_code=self.naptan_code, day=enums.DayOfWeekEnum.FRIDAY
+            )
         assert response.status_code == 200
         assert response.json() == CROWDING_NAPTAN
