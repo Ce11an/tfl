@@ -27,7 +27,7 @@ Currently, we support the following APIs:
 
 The plan is to add support for all the TFL APIs. Contributions are welcome!
 
-## Installation
+## 🫶 Installation
 
 ```bash
 pip install py-tfl
