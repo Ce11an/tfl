@@ -8,6 +8,7 @@ from tests.static_vars import (
     AIR_QUALITY,
     CROWDING_NAPTAN,
     LIFT_DISRUPTIONS,
+    LIFT_DISRUPTIONS_TABLE,
 )
 from tfl.cli.main import app
 
@@ -38,7 +39,7 @@ class TestApp:
         )
         result = runner.invoke(app, ["lift-disruptions"])
         assert result.exit_code == 0
-        assert "[\n" in result.stdout
+        assert result.stdout == LIFT_DISRUPTIONS_TABLE
 
     def test_lift_disruptions_with_key_env(self, httpx_mock, monkeypatch) -> None:
         """Test the lift-disruptions command with the TFL_API_KEY environment variable."""
@@ -49,7 +50,7 @@ class TestApp:
             method="GET",
         )
         result = runner.invoke(app, ["lift-disruptions"])
-        assert "[\n" in result.stdout
+        assert result.stdout == LIFT_DISRUPTIONS_TABLE
 
     def test_accident_stats_before_2020(self, httpx_mock) -> None:
         """Test the accident-stats command before 2020."""
