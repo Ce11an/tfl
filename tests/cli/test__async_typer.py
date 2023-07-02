@@ -1,4 +1,4 @@
-"""Test the CLI module."""
+"""Test the async Typer class."""
 
 import asyncio
 

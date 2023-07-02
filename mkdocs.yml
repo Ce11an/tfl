@@ -108,13 +108,17 @@ nav:
   - Home: index.md
   - CLI: cli.md
   - API Reference:
+      - Base:
+          - Base Handler: base/base_handler.md
       - Clients:
           - Authentication: clients/auth.md
           - TFL Client: clients/tfl_client.md
-          - Air Quality Client: clients/air_quality_client.md
-          - Accident Stats Client: clients/accident_stats_client.md
-          - Crowding Client: clients/crowding_client.md
-          - Lift Disruptions Client: clients/lift_disruptions_client.md
       - Enums: enums.md
+      - Handlers:
+          - TFL Handlers: clients/handlers/client_handlers.md
+          - Air Quality Handler: clients/handlers/air_quality_handler.md
+          - Accident Stats Handler: clients/handlers/accident_stats_handler.md
+          - Crowding Handler: clients/handlers/crowding_handler.md
+          - Lift Disruptions Handler: clients/handlers/lift_disruptions_handler.md
   - Help: help.md
   - Contributing: contributing.md

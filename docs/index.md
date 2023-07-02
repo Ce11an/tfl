@@ -57,9 +57,8 @@ provides a fast, async HTTP client.
 ```python
 from tfl import clients
 
-
-async with clients.LiftDisruptionsV2Client() as client:
-    response = await client.get_lift_disruptions()
+async with clients.TFLClient(auth=clients.Auth(key="<your-tfl-api-key>")) as client:
+    response = await client.handlers.lift_disruptions_v2_handler.get_lift_disruptions()
 
 print(response.json())
 ```

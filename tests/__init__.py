@@ -1,1 +1,1 @@
-"""Unit tests for the project."""
+"""Unit tests for the tfl package."""

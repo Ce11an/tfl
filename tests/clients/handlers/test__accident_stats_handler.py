@@ -1,12 +1,15 @@
-"""Test the accident stats client class."""
+"""Test the accident stats handler class."""
 
+import httpx
 import pytest
 
 from tests.static_vars import ACCIDENT_STATS_AFTER_2020, ACCIDENT_STATS_BEFORE_2020, LIFT_DISRUPTIONS
-from tfl import clients
+
+# noinspection PyProtectedMember
+from tfl.clients.handlers._accident_stats_handler import AccidentStatsHandler
 
 
-class TestLiftDisruptionsV2Client:
+class TestAccidentStatsHandler:
     """Test the accident stats client class."""
 
     @pytest.mark.asyncio
@@ -17,8 +20,8 @@ class TestLiftDisruptionsV2Client:
             json=ACCIDENT_STATS_BEFORE_2020,
             method="GET",
         )
-        async with clients.AccidentStatsClient() as client:
-            response = await client.get_accident_stats(2019)
+        async with httpx.AsyncClient(base_url="https://api.tfl.gov.uk") as client:
+            response = await AccidentStatsHandler(client).get_accident_stats(2019)
         assert response.status_code == 200
         assert response.json() == ACCIDENT_STATS_BEFORE_2020
 
@@ -30,7 +33,7 @@ class TestLiftDisruptionsV2Client:
             json=ACCIDENT_STATS_AFTER_2020,
             method="GET",
         )
-        async with clients.AccidentStatsClient() as client:
-            response = await client.get_accident_stats(2020)
+        async with httpx.AsyncClient(base_url="https://api.tfl.gov.uk") as client:
+            response = await AccidentStatsHandler(client).get_accident_stats(2020)
         assert response.status_code == 200
         assert response.json() == ACCIDENT_STATS_AFTER_2020

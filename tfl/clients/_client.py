@@ -1,7 +1,7 @@
 """A client to interact with the TFL API.
 
 The `TFLClient` class is a subclass of [httpx.AsyncClient](https://www.python-httpx.org/api/#asyncclient) that is used
-to interact with the TFL API. It is used as the base class for all other TFL API clients.
+to interact with the TFL API. Using the `TFLClient` class, you can send requests to the TFL API.
 
 The `TFLClient` allows for the `Auth` class to be passed in as an argument. This will add the API key to the request
 URL as a query parameter. If no `Auth` class is passed in, the request will be sent without an API key. This will
@@ -10,6 +10,20 @@ result in a rate limit of 50 requests per hour.
 Also, the `base_url` is set to the TFL API base URL. This means that when a request is sent, the URL will be appended
 to the base URL. For example, if the `base_url` is set to `https://api.tfl.gov.uk/`, and the request URL is set to
 `Disruptions/Lifts/v2`, the request URL will be `https://api.tfl.gov.uk/Disruptions/Lifts/v2`.
+
+Using the `TFLClient`, you can access all of TFL API through handlers. For example, to access the Lift Disruptions
+V2 API, you can use the `LiftDisruptionsV2Handler`:
+
+```python
+from tfl import clients
+
+async with clients.TFLClient() as client:
+    response = await client.handlers.lift_disruptions_v2_handler.get_lift_disruptions()
+
+print(response.json())
+```
+
+Check out [Handlers](handlers) for more information on the available handlers.
 """
 
 from typing import Any, Callable, List, Mapping, Optional, Union
@@ -32,6 +46,7 @@ from httpx._types import (
 )
 
 from tfl.clients import Auth
+from tfl.clients.handlers import TFLHandlers
 
 __all__ = ["TFLClient"]
 
@@ -66,7 +81,7 @@ class TFLClient(httpx.AsyncClient):
         from tfl.clients import Auth
 
         async with TFLClient(auth=Auth(key="<your-tfl-api-key>")) as client:
-            response = await client.get(url="Disruptions/Lifts/v2")
+            response = await client.handlers.lift_disruptions_v2_handler.get_lift_disruptions()
 
         print(response.json())
         ```
@@ -117,3 +132,4 @@ class TFLClient(httpx.AsyncClient):
             transport=transport,
             app=app,
         )
+        self.handlers = TFLHandlers(self)

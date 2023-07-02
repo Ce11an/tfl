@@ -1,4 +1,5 @@
 """Main module for the tfl CLI."""
+
 from typing import Any, Dict, Optional, Tuple
 
 import rich
@@ -33,8 +34,8 @@ async def lift_disruptions(
         split_message = resp_json["message"].split(":")
         return split_message[0], split_message[1].replace(" No Step Free Access - ", "")
 
-    async with clients.LiftDisruptionsV2Client(auth=tfl.clients.Auth(key=key) if key else None) as client:
-        response = await client.get_lift_disruptions()
+    async with clients.TFLClient(auth=tfl.clients.Auth(key=key) if key else None) as client:
+        response = await client.handlers.lift_disruptions_v2_handler.get_lift_disruptions()
     table = Table(
         "Station",
         "Message",
@@ -55,8 +56,8 @@ async def accident_stats(
     key: Annotated[Optional[str], typer.Argument(envvar="TFL_API_KEY", help="TFL API key.")] = None,
 ) -> None:
     """Gets all accident details for accidents occurring in the specified year."""
-    async with clients.AccidentStatsClient(auth=tfl.clients.Auth(key=key) if key else None) as client:
-        response = await client.get_accident_stats(year=year)
+    async with clients.TFLClient(auth=tfl.clients.Auth(key=key) if key else None) as client:
+        response = await client.handlers.accident_stats_handler.get_accident_stats(year=year)
     rich.print(response.json())
     raise typer.Exit()
 
@@ -75,8 +76,8 @@ async def crowding(
 ) -> None:
     """Information about crowding levels within TFL stations."""
     day = tfl.enums.DayOfWeekEnum(day) if day else None
-    async with clients.CrowdingClient(auth=tfl.clients.Auth(key=key) if key else None) as client:
-        response = await client.get_crowding(naptan_code=naptan_code, day=day)
+    async with clients.TFLClient(auth=tfl.clients.Auth(key=key) if key else None) as client:
+        response = await client.handlers.crowding_handler.get_crowding(naptan_code=naptan_code, day=day)
     rich.print(response.json())
     raise typer.Exit()
 
@@ -92,8 +93,8 @@ async def air_quality(
         current_forecast = resp_json["currentForecast"][0]
         return current_forecast["forecastBand"], current_forecast["forecastSummary"]
 
-    async with clients.AirQualityClient(auth=tfl.clients.Auth(key=key) if key else None) as client:
-        response = await client.get_air_quality()
+    async with clients.TFLClient(auth=tfl.clients.Auth(key=key) if key else None) as client:
+        response = await client.handlers.air_quality_handler.get_air_quality()
 
     data = response.json()
     table = Table(
