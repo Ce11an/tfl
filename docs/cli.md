@@ -60,6 +60,38 @@ export TFL_API_KEY=<your-api-key>
 ```
 
 ## 📚 Examples
+
+Please note that the below outputs are examples, and the actual output may differ.
+
+### ☁️ Air quality
+
+Get the current TFL air quality, run:
+```bash
+tfl air-quality
+```
+
+which will output:
+
+```text
+                              Today's Air Quality
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                       ┃                                                      ┃
+┃ Air Pollution Banding ┃ Summary                                              ┃
+┃                       ┃                                                      ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│                       │                                                      │
+│ Low                   │ Low air pollution forecast valid from Tuesday 9 May  │
+│                       │ to end of Thursday 11 May GMT                        │
+│                       │                                                      │
+└───────────────────────┴──────────────────────────────────────────────────────┘
+This forecast is intended to provide information on expected pollution levels in
+areas of significant public exposure. It may not apply in very specific
+locations close to unusually strong or short-lived local sources of pollution.
+
+For more information, please visit: http://londonair.org.uk/forecast
+
+```
+
 ### 🛗 Lift disruptions
 
 Get the current TFL lift disruptions, run:
@@ -90,4 +122,3 @@ which will output:
 └─────────────────────────────┴─────────────────────────────────────────────┘
                         Current TFL lift disruptions.
 ```
-Please note that this is an example of the output, and the actual output may differ.
